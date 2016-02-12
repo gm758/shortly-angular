@@ -13,6 +13,7 @@ angular.module('shortly.shorten', [])
       $scope.baseUrl = data.base_url;
       $scope.code = data.code;
       $scope.hidden = !$scope.hidden;
+      $scope.shortenLink = '';
     });
   };
 });
