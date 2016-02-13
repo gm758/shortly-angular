@@ -1,11 +1,13 @@
 var express = require('express');
 var mongoose = require('mongoose');
-
+var favicon = require('serve-favicon');
+var path = require('path');
 var app = express();
 
 // connect to mongo database named "shortly"
 mongoose.connect('mongodb://localhost/shortly');
 
+app.use(favicon(path.join(__dirname, '../client/assets/favicon.ico')));
 // configure our server with all the middleware and routing
 require('./config/middleware.js')(app, express);
 require('./config/routes.js')(app, express);
@@ -15,3 +17,5 @@ app.listen(8000);
 
 // export our app for testing and flexibility, required by index.js
 module.exports = app;
+
+

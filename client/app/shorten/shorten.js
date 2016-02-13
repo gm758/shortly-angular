@@ -1,6 +1,6 @@
 angular.module('shortly.shorten', [])
 
-.controller('ShortenController', function ($scope, $location, Links) {
+.controller('ShortenController', function ($scope, $location, Links, Auth) {
   $scope.hidden = true;
 
   $scope.handleSubmit = function () {
@@ -15,5 +15,9 @@ angular.module('shortly.shorten', [])
       $scope.hidden = !$scope.hidden;
       $scope.shortenLink = '';
     });
+  };
+
+  $scope.signout = function () {
+    Auth.signout();
   };
 });
