@@ -22,6 +22,13 @@ angular.module('shortly', [
     .when('/shorten', {
       templateUrl: 'app/shorten/shorten.html',
       controller: 'ShortenController' //is it nececssary to have this line and define it in the teplate?
+    })
+    .when('/signout', {
+      // resolve using Auth.signout
+    })
+    .otherwise({
+      templateUrl: 'app/links/links.html',
+      controller: 'LinksController'
     });
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
@@ -53,7 +60,8 @@ angular.module('shortly', [
   // and send that token to the server to see if it is a real user or hasn't expired
   // if it's not valid, we then redirect back to signin/signup
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    if (next.$$route && !Auth.isAuth()) {
+    // next.$$route &&
+    if (!Auth.isAuth()) {
       $location.path('/signin');
     }
   });

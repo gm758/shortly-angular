@@ -3,6 +3,8 @@ angular.module('shortly.shorten', [])
 .controller('ShortenController', function ($scope, $location, Links, Auth) {
   $scope.hidden = true;
   $scope.link = {};
+  $scope.shortenLink = '';
+  $scope.validation = '';
   $scope.addLink = function () {
     Links.addLink({url: $scope.shortenLink}).then(function (res) {
       $scope.link = res.data;
@@ -14,4 +16,8 @@ angular.module('shortly.shorten', [])
   $scope.signout = function () {
     Auth.signout();
   };
+  $scope.isValidUrl = function () {
+    $scope.validation = Links.isValidUrl($scope.shortenLink);
+  };
+
 });
