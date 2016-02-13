@@ -9,7 +9,7 @@ angular.module('shortly.shorten', [])
     if ($scope.validation) {
       Links.addLink({url: $scope.shortenLink}).then(function (res) {
         $scope.link = res.data;
-        $scope.hidden = !$scope.hidden;
+        $scope.hidden = false;
         $scope.shortenLink = '';
       });
     }
