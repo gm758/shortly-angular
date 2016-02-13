@@ -2,15 +2,10 @@ angular.module('shortly.shorten', [])
 
 .controller('ShortenController', function ($scope, $location, Links, Auth) {
   $scope.hidden = true;
-
-  $scope.handleSubmit = function () {
+  $scope.link = {};
+  $scope.addLink = function () {
     Links.addLink({url: $scope.shortenLink}).then(function (res) {
-      var data = res.data;
-      $scope.visits = data.visits;
-      $scope.title = data.title;
-      $scope.url = data.url;
-      $scope.baseUrl = data.base_url;
-      $scope.code = data.code;
+      $scope.link = res.data;
       $scope.hidden = !$scope.hidden;
       $scope.shortenLink = '';
     });
