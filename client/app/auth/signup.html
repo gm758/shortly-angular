@@ -5,5 +5,7 @@
     <input type="password" ng-model='user.password'>
     <button>signup</button>
   </form>
+  <div ng-hide="isValidUsername"> Invalid Username </div>
+  <div ng-hide="isValidPassword"> Invalid Password </div>
   <a href="#/signin">Already have an account? <strong>Signin</strong> ...</a>
 </div>

@@ -72,11 +72,17 @@ angular.module('shortly.services', [])
     $location.path('/signin');
   };
 
+  var isValidInput = function (input) {
+    var validInput = /^[a-zA-Z0-9]*$/;
+    console.log(input.match(validInput));
+    return !!input.match(validInput);
+  };
 
   return {
     signin: signin,
     signup: signup,
     isAuth: isAuth,
-    signout: signout
+    signout: signout,
+    isValidInput: isValidInput
   };
 });

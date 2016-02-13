@@ -5,26 +5,41 @@ angular.module('shortly.auth', [])
 
 .controller('AuthController', function ($scope, $window, $location, Auth) {
   $scope.user = {};
+  $scope.validPassword = false;
+  $scope.validUsername = false;
 
   $scope.signin = function () {
-    Auth.signin($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.shortly', token);
-        $location.path('/links');
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    if ($scope.validPassword && $scope.validUsername) {
+      Auth.signin($scope.user)
+        .then(function (token) {
+          $window.localStorage.setItem('com.shortly', token);
+          $location.path('/links');
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    }
   };
 
   $scope.signup = function () {
-    Auth.signup($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.shortly', token);
-        $location.path('/links');
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    if ($scope.validPassword && $scope.validUsername) {
+      Auth.signup($scope.user)
+        .then(function (token) {
+          $window.localStorage.setItem('com.shortly', token);
+          $location.path('/links');
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    }
   };
+
+  $scope.isValidUsername = function () {
+   $scope.validUsername = Auth.isValidInput($scope.user.username);
+  };
+
+  $scope.isValidPassword = function () {
+   $scope.validPassword = Auth.isValidInput($scope.user.password);
+  };
+
 });
