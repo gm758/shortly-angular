@@ -15,11 +15,11 @@ angular.module('shortly', [
       templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
     })
-    .when('/', {
+    .when('/links', {
       templateUrl: 'app/links/links.html',
       controller: 'LinksController'
     })
-    .when('/create', {
+    .when('/shorten', {
       templateUrl: 'app/shorten/shorten.html',
       controller: 'ShortenController' //is it nececssary to have this line and define it in the teplate?
     });
