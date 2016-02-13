@@ -9,14 +9,16 @@
   </head>
   <body>
   <div class='container'>
+  <div ng-show="location != '/signup' && location != '/signin'" >
     <h1 style='text-align: center'>Shortly</h1>
-    <div ng-show="location != '/signup' && location != '/signin'" class='navigation'>
+    <div class='navigation'>
       <ul>
         <li><a href='#/links' class='index'>All Links</a></li>
         <li><a href='#/shorten' class='create'>Shorten</a></li>
         <li><a href='#/signout' class='logout'>Logout</a></li>
       </ul>
     </div>
+  </div>
 
 
     <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
