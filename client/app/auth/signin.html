@@ -1,7 +1,7 @@
-<div class="row">
-  <div class="col-sm-4">
+<div class="row row-centered">
+  <div class="col-sm-4 col-centered">
     <div id='signin'>
-      <h1>Sign In</h1>
+      <h2>Sign In</h2>
       <form name="userForm" ng-submit="signin(userForm.$valid)" novalidate>
         <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
           <label> Username</label>

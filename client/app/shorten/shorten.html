@@ -6,9 +6,9 @@
   </ul>
 </div>
 
-<div id='container' >
+<div id='container' class='creator'>
   <form name='urlInput'>
-      <input class='text' type='url' name='url' ng-model="shortenLink" >
+      <input class='message' type='url' name='url' ng-model="shortenLink" >
       <input type='submit' value='Shorten' ng-click="addLink(urlInput.$valid)">
       <div ng-show="urlInput.url.$error.url"> Invalid URL </div>
   </form>
@@ -16,7 +16,7 @@
   <img ng-show="spinner" class='spinner' src='/assets/spiffygif_46x46.gif'>
   <div class='message' ng-hide="hidden">
   <div class='link'>
-    <img src='/assets/redirect_icon.png'/>
+    <img class='spinner' src='/assets/redirect_icon.png'/>
     <div class='info'>
       <div class='title'>{{link.title}}</div>
       <div class='original'>{{link.url}}</div>

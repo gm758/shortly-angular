@@ -7,7 +7,7 @@
 </div>
 
 <div id='container'>
-  <input ng-model="search.title" />
+  <input ng-model="search.title" placeholder="Search..." />
   <div class='link' ng-repeat="link in data.links | filter:search:strict | orderBy:'-visits'">
     <img src='/assets/redirect_icon.png'/>
     <div class='info'>
