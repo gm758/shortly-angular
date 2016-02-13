@@ -1,11 +1,11 @@
 <div id='signup'>
   <h1>signup</h1>
   <form name="signupForm" ng-submit='signup()'>
-    <input type='text' ng-model='user.username'>
-    <input type="password" ng-model='user.password'>
+    <input type='text' ng-model='user.username' ng-change='isValidUsername()'>
+    <input type="password" ng-model='user.password' ng-change='isValidPassword()'>
     <button>signup</button>
   </form>
-  <div ng-hide="isValidUsername"> Invalid Username </div>
-  <div ng-hide="isValidPassword"> Invalid Password </div>
+  <div ng-hide="validUsername"> Invalid Username </div>
+  <div ng-hide="validPassword"> Invalid Password </div>
   <a href="#/signin">Already have an account? <strong>Signin</strong> ...</a>
 </div>

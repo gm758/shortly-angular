@@ -10,6 +10,7 @@ angular.module('shortly.auth', [])
 
   $scope.signin = function () {
     if ($scope.validPassword && $scope.validUsername) {
+      console.log('test');
       Auth.signin($scope.user)
         .then(function (token) {
           $window.localStorage.setItem('com.shortly', token);
@@ -22,7 +23,11 @@ angular.module('shortly.auth', [])
   };
 
   $scope.signup = function () {
+    console.log($scope.validPassword);
+    console.log($scope.validUsername);
     if ($scope.validPassword && $scope.validUsername) {
+      console.log('test');
+
       Auth.signup($scope.user)
         .then(function (token) {
           $window.localStorage.setItem('com.shortly', token);

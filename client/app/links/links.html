@@ -6,7 +6,7 @@
   </ul>
 </div>
 
-<div id='container' ng-controller="LinksController">
+<div id='container'>
   <input ng-model="search.title" />
   <div class='link' ng-repeat="link in data.links | filter:search:strict | orderBy:'-visits'">
     <img src='/assets/redirect_icon.png'/>

@@ -10,7 +10,8 @@ var findAllLinks = Q.nbind(Link.find, Link);
 module.exports = {
 
   allLinks: function (req, res, next) {
-  findAllLinks({})
+  var user = req.user.username;
+  findAllLinks({user: user})
     .then(function (links) {
       res.json(links);
     })
@@ -21,11 +22,13 @@ module.exports = {
 
   newLink: function (req, res, next) {
     var url = req.body.url;
+    var username = req.user.username;
     if (!util.isValidUrl(url)) {
       return next(new Error('Not a valid url'));
     }
 
-    findLink({url: url})
+    findLink({url: url,
+      user: username})
       .then(function (match) {
         if (match) {
           res.send(match);
@@ -39,7 +42,8 @@ module.exports = {
             url: url,
             visits: 0,
             base_url: req.headers.origin,
-            title: title
+            title: title,
+            user: username
           };
           return createLink(newLink);
         }
