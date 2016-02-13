@@ -6,11 +6,13 @@ angular.module('shortly.shorten', [])
   $scope.shortenLink = '';
   $scope.validation = '';
   $scope.addLink = function () {
-    Links.addLink({url: $scope.shortenLink}).then(function (res) {
-      $scope.link = res.data;
-      $scope.hidden = !$scope.hidden;
-      $scope.shortenLink = '';
-    });
+    if ($scope.validation) {
+      Links.addLink({url: $scope.shortenLink}).then(function (res) {
+        $scope.link = res.data;
+        $scope.hidden = !$scope.hidden;
+        $scope.shortenLink = '';
+      });
+    }
   };
 
   $scope.signout = function () {
