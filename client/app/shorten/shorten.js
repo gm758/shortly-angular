@@ -4,8 +4,7 @@ angular.module('shortly.shorten', [])
   $scope.hidden = true;
 
   $scope.handleSubmit = function () {
-    Links.addLink($scope.shortenLink).then(function (res) {
-      console.log(res.data);
+    Links.addLink({url: $scope.shortenLink}).then(function (res) {
       var data = res.data;
       $scope.visits = data.visits;
       $scope.title = data.title;

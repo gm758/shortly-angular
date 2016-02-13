@@ -21,15 +21,15 @@ describe('Services', function () {
       expect(Links).to.exist;
     });
 
-    it('should have a method `getAll`', function () {
-      expect(Links.getAll).to.be.a('function');
+    it('should have a method `getLinks`', function () {
+      expect(Links.getLinks).to.be.a('function');
     });
 
-    it('should have a method `addOne`', function () {
-      expect(Links.addOne).to.be.a('function');
+    it('should have a method `addLink`', function () {
+      expect(Links.addLink).to.be.a('function');
     });
 
-    it('should get all links with `getAll`', function () {
+    it('should get all links with `getLinks`', function () {
       var mockResponse = [
         { title: 'Twitter',
           url: 'https://twitter.com' },
@@ -39,14 +39,14 @@ describe('Services', function () {
 
       $httpBackend.expect('GET', '/api/links').respond(mockResponse);
 
-      Links.getAll().then(function (links) {
+      Links.getLinks().then(function (links) {
         expect(links).to.deep.equal(mockResponse);
       });
 
       $httpBackend.flush();
     });
 
-    it('should add a new link with `addOne`', function () {
+    it('should add a new link with `addLink`', function () {
       var github = { url: 'https://github.com/hackreactor-labs' };
 
       $httpBackend
@@ -56,7 +56,7 @@ describe('Services', function () {
           title: 'Hack Reactor Labs'
         });
 
-      Links.addOne(github).then(function (resp) {
+      Links.addLink(github).then(function (resp) {
         expect(resp.status).to.equal(201);
         expect(resp.data.title).to.equal('Hack Reactor Labs');
       });

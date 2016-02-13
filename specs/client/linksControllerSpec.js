@@ -30,18 +30,18 @@ describe('LinksController', function () {
     expect($scope.data).to.be.an('object');
   });
 
-  it('should call `Links.getAll()` when controller is loaded', function () {
-    sinon.spy(Links, 'getAll');
+  it('should call `Links.getLinks()` when controller is loaded', function () {
+    sinon.spy(Links, 'getLinks');
     $httpBackend.expectGET('/api/links').respond(200);
 
     createController();
     $httpBackend.flush();
 
-    expect(Links.getAll.called).to.equal(true);
-    Links.getAll.restore();
+    expect(Links.getLinks.called).to.equal(true);
+    Links.getLinks.restore();
   });
 
-  it('should populate the data property after the call to `Links.getAll()`', function () {
+  it('should populate the data property after the call to `Links.getLinks()`', function () {
     var mockLinks = [{},{},{}];
     $httpBackend.expectGET('/api/links').respond(mockLinks);
 
