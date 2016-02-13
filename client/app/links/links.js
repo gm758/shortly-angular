@@ -9,9 +9,4 @@ angular.module('shortly.links', [])
     $scope.data.links = data;
   });
 
-  $scope.signout = function () {
-    Auth.signout();
-  };
-
-
 });

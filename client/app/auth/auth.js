@@ -5,46 +5,34 @@ angular.module('shortly.auth', [])
 
 .controller('AuthController', function ($scope, $window, $location, Auth) {
   $scope.user = {};
-  $scope.validPassword = false;
-  $scope.validUsername = false;
+  $scope.failed = true;
 
-  $scope.signin = function () {
-    if ($scope.validPassword && $scope.validUsername) {
-      console.log('test');
+  $scope.signin = function (boolean) {
+    if (boolean) {
       Auth.signin($scope.user)
         .then(function (token) {
           $window.localStorage.setItem('com.shortly', token);
           $location.path('/links');
         })
         .catch(function (error) {
+          $scope.failed = false;
           console.error(error);
         });
     }
   };
 
-  $scope.signup = function () {
-    console.log($scope.validPassword);
-    console.log($scope.validUsername);
-    if ($scope.validPassword && $scope.validUsername) {
-      console.log('test');
-
+  $scope.signup = function (boolean) {
+    if (boolean) {
       Auth.signup($scope.user)
         .then(function (token) {
           $window.localStorage.setItem('com.shortly', token);
           $location.path('/links');
         })
         .catch(function (error) {
+          $scope.failed = false;
           console.error(error);
         });
     }
-  };
-
-  $scope.isValidUsername = function () {
-   $scope.validUsername = Auth.isValidInput($scope.user.username);
-  };
-
-  $scope.isValidPassword = function () {
-   $scope.validPassword = Auth.isValidInput($scope.user.password);
   };
 
 });

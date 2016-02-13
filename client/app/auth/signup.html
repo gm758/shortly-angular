@@ -1,11 +1,24 @@
-<div id='signup'>
-  <h1>signup</h1>
-  <form name="signupForm" ng-submit='signup()'>
-    <input type='text' ng-model='user.username' ng-change='isValidUsername()'>
-    <input type="password" ng-model='user.password' ng-change='isValidPassword()'>
-    <button>signup</button>
-  </form>
-  <div ng-hide="validUsername"> Invalid Username </div>
-  <div ng-hide="validPassword"> Invalid Password </div>
-  <a href="#/signin">Already have an account? <strong>Signin</strong> ...</a>
+<div class="row">
+  <div class="col-sm-4">
+    <div id='signup'>
+      <h1>Sign Up</h1>
+      <form name="userForm" ng-submit="signup(userForm.$valid)" novalidate>
+        <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+          <label> Username</label>
+          <input type='text' name='username' class='form-control' ng-model='user.username' ng-minlength="3" ng-maxlength="8" required>
+          <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
+          <p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+          <p ng-hide='failed' class="help-block"> User already exists. </p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+          <label>Password</label>
+          <input type="password" name='password' class="form-control" ng-model='user.password' ng-minlength="3" ng-maxlength="20" required>
+          <p ng-show="userForm.password.$error.minlength" class="help-block">Password is too short.</p>
+          <p ng-show="userForm.password.$error.maxlength" class="help-block">Password is too long.</p>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+      </form>
+      <a href="#/signin">Already have an account? <strong>Signin</strong> ...</a>
+    </div>
+  </div>
 </div>

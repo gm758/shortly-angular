@@ -4,11 +4,10 @@ angular.module('shortly.shorten', [])
   $scope.hidden = true;
   $scope.link = {};
   $scope.shortenLink = '';
-  $scope.validation = '';
   $scope.spinner = false;
-  $scope.addLink = function () {
+  $scope.addLink = function (boolean) {
     $scope.spinner = true;
-    if ($scope.validation) {
+    if (boolean) {
       Links.addLink({url: $scope.shortenLink}).then(function (res) {
         $scope.spinner = false;
         $scope.link = res.data;
@@ -16,13 +15,6 @@ angular.module('shortly.shorten', [])
         $scope.shortenLink = '';
       });
     }
-  };
-
-  $scope.signout = function () {
-    Auth.signout();
-  };
-  $scope.isValidUrl = function () {
-    $scope.validation = Links.isValidUrl($scope.shortenLink);
   };
 
 });

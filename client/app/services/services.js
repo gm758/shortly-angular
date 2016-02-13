@@ -18,17 +18,10 @@ angular.module('shortly.services', [])
     });
   };
 
-  var isValidUrl = function (url) {
-    var rValidUrl = /^(?!mailto:)(?:(?:https?|ftp):\/\/)?(?:\S+(?::\S*)?@)?(?:(?:(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[0-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))|localhost)(?::\d{2,5})?(?:\/[^\s]*)?$/i;
-    return !!url.match(rValidUrl);
-  };
-
-
 
   return {
     getLinks: getLinks,
-    addLink: addLink,
-    isValidUrl: isValidUrl
+    addLink: addLink
   };
 
 
@@ -72,17 +65,10 @@ angular.module('shortly.services', [])
     $location.path('/signin');
   };
 
-  var isValidInput = function (input) {
-    var validInput = /^[a-zA-Z0-9]*$/;
-    console.log(input.match(validInput));
-    return !!input.match(validInput);
-  };
-
   return {
     signin: signin,
     signup: signup,
     isAuth: isAuth,
-    signout: signout,
-    isValidInput: isValidInput
+    signout: signout
   };
 });

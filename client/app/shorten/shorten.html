@@ -2,17 +2,16 @@
   <ul>
     <li><a href='#/links' class='index'>All Links</a></li>
     <li><a href='#/shorten' class='create'>Shorten</a></li>
-    <li><a href='#' class='logout' ng-click='signout()'>Logout</a></li>
+    <li><a href='#/signout' class='logout'>Logout</a></li>
   </ul>
 </div>
 
 <div id='container' >
-  <form>
-      <input class='text' type='text' name='url' ng-model="shortenLink" ng-change='isValidUrl()'>
-      <input type='submit' value='Shorten' ng-click="addLink()">
+  <form name='urlInput'>
+      <input class='text' type='url' name='url' ng-model="shortenLink" >
+      <input type='submit' value='Shorten' ng-click="addLink(urlInput.$valid)">
+      <div ng-show="urlInput.url.$error.url"> Invalid URL </div>
   </form>
-  <div ng-show="validation"> Valid URL </div>
-  <div ng-hide="validation"> Invalid URL </div>
 
   <img ng-show="spinner" class='spinner' src='/assets/spiffygif_46x46.gif'>
   <div class='message' ng-hide="hidden">

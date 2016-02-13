@@ -29,7 +29,12 @@ angular.module('shortly', [
       access: {restricted: true}
     })
     .when('/signout', {
-      // resolve using Auth.signout
+      resolve: {
+        signout: function (Auth) {
+          return Auth.signout();
+        }
+      },
+      access: {restricted: false}
     })
     .otherwise({
       templateUrl: 'app/links/links.html',
@@ -66,10 +71,6 @@ angular.module('shortly', [
   // and send that token to the server to see if it is a real user or hasn't expired
   // if it's not valid, we then redirect back to signin/signup
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    // next.$$route &&
-    console.log(evt);
-    console.log(next);
-    console.log(current);
     if (next.access.restricted && !Auth.isAuth()) {
       $location.path('/signin');
     }
