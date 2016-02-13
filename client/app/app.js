@@ -9,26 +9,32 @@ angular.module('shortly', [
   $routeProvider
     .when('/signin', {
       templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController'
+      controller: 'AuthController',
+      access: {restricted: false}
     })
     .when('/signup', {
       templateUrl: 'app/auth/signup.html',
-      controller: 'AuthController'
+      controller: 'AuthController',
+      access: {restricted: false}
     })
     .when('/links', {
       templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
+      controller: 'LinksController',
+      access: {restricted: true}
+
     })
     .when('/shorten', {
       templateUrl: 'app/shorten/shorten.html',
-      controller: 'ShortenController' //is it nececssary to have this line and define it in the teplate?
+      controller: 'ShortenController', //is it nececssary to have this line and define it in the teplate?
+      access: {restricted: true}
     })
     .when('/signout', {
       // resolve using Auth.signout
     })
     .otherwise({
       templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
+      controller: 'LinksController',
+      access: {restricted: true}
     });
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
@@ -61,7 +67,10 @@ angular.module('shortly', [
   // if it's not valid, we then redirect back to signin/signup
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     // next.$$route &&
-    if (!Auth.isAuth()) {
+    console.log(evt);
+    console.log(next);
+    console.log(current);
+    if (next.access.restricted && !Auth.isAuth()) {
       $location.path('/signin');
     }
   });
