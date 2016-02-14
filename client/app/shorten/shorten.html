@@ -1,7 +1,7 @@
 <div id='container' class='creator'>
   <form name='urlInput'>
-      <input class='message' type='url' name='url' ng-model="shortenLink" >
-      <input type='submit' value='Shorten' ng-click="addLink(urlInput.$valid)">
+      <input class='message' placeholder='Paste your URL here' type='url' name='url' ng-model="shortenLink" >
+      <input class='waves-effect waves-light btn' type='submit' value='Shorten' ng-click="addLink(urlInput.$valid)">
       <div ng-show="urlInput.url.$error.url"> Invalid URL </div>
   </form>
 

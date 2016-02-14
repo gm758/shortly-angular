@@ -5,20 +5,26 @@
     <title>Shortly</title>
     <!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
   </head>
   <body>
   <div class='container'>
   <div ng-show="location != '/signup' && location != '/signin'" >
     <h1 style='text-align: center'>Shortly</h1>
-    <div class='navigation'>
-      <ul>
+    <nav>
+    <div class='nav-wrapper'>
+      <ul id='nav-mobile' class='left hide-on-med-and down'>
         <li><a href='#/links' class='index'>All Links</a></li>
         <li><a href='#/shorten' class='create'>Shorten</a></li>
-        <li><a href='#/signout' class='logout'>Logout</a></li>
+      </ul>
+      <ul class="right hide-on-med-and-down">
+        <li><a href='#/signout' class='logout'><i class="material-icons left">power_settings_new</i>Logout</a></li>
       </ul>
     </div>
+    </nav>
   </div>
+
 
 
     <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
